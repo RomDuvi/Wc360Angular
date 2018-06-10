@@ -1,0 +1,10 @@
+<h3>Tournament Winning Team</h3>
+<div class="form-group form-inline col-sm-4">
+    <select class="form-control" id="winnerTeam" [(ngModel)] = "selected" style="margin-right: 5px" [disabled] = "!canBet">
+        <option *ngFor="let team of teams" [value]="team.id">{{team.name}}</option>
+    </select>
+    <button class="btn btn-success" type="submit" (click) = "saveBet()" [disabled] = "!canBet">Save Bet</button>
+</div>
+<div class="col-sm-4" *ngIf="winningTeam" >
+    Bet : {{winningTeam.name}}
+</div>

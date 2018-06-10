@@ -1,0 +1,12 @@
+<h3>Qualif teams</h3>
+<div class="row">
+    <div class="col-sm-2" *ngFor="let team of qualifTeams" >
+        <input type="checkbox" id="team.id" (change)="checkChange()" [(ngModel)]="team.selected" [disabled] = "bet"/> {{team.team.name}}
+    </div>
+</div>
+<div class="col-sm-12 text-center">
+    <button class="btn btn-success" (click)="saveBet()" [disabled]="selectedNumber !== 0 || bet">Save Bet</button>
+</div>
+<div class="col-sm-12 text-center">
+    Number of team to select : {{selectedNumber}}
+</div>

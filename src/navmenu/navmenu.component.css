@@ -1,0 +1,9 @@
+li .glyphicon {
+    margin-right: 10px;
+}
+
+.navbar {
+    border-radius: 0px;
+    border-width: 0px;
+    max-height: 50px;
+}

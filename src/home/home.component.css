@@ -1,0 +1,22 @@
+.side{
+    min-height:100%;
+    padding-right:0;
+    background-color: rgb(75, 88, 107);
+}
+
+.col-2{
+    padding:0;
+} 
+
+.col-10{
+    padding-left:0;
+}
+
+.nav a{
+    color:white;
+    padding-left:25px;   
+}
+
+.nav-pills .nav-link {
+    border-radius: 0;
+}

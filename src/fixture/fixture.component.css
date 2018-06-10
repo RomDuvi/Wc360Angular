@@ -1,0 +1,13 @@
+.fixture input{
+    max-width: 45px;
+    text-align: center;
+}
+
+.fixture label{
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.fixture{
+    margin : 5px; 
+}

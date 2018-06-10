@@ -1,0 +1,11 @@
+<!-- <div *ngIf="fixtureDates">No Fixture To Display</div> -->
+<div *ngFor="let fixtureDate of fixtureDates">
+  <div>
+    <h3>{{fixtureDate.date.toDateString()}}</h3>
+  </div>
+  <div class="row text-center">
+    <fixture *ngFor="let fixture of fixtureDate.fixtures" [fixture]="fixture" class="row col-sm-12">
+
+    </fixture>
+  </div>
+

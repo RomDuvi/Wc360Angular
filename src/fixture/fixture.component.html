@@ -1,0 +1,26 @@
+<div class="col-sm-10 fixture">
+  <div class="form-inline fixture">
+    <div class="col-sm-1">
+      <strong>{{timeToString(fixture.date)}}</strong>
+    </div>
+    <div class="col-sm-2">
+      <label>{{fixture.team1.name}}</label>
+    </div>
+    <div class="col-sm-1">
+      <input class="form-control" [(ngModel)]="fixture.scoreTeam1" [disabled]="betClosed">
+    </div>
+    <div class="col-sm-1 text-center">-</div>
+    <div class="col-sm-1">
+      <input class="form-control" [(ngModel)]="fixture.scoreTeam2" [disabled]="betClosed">
+    </div>
+    <div class="col-sm-2">
+      <label>{{fixture.team2.name}}</label>
+    </div>
+    <div class="col-sm-1" *ngIf="!betClosed" >
+      <button type="submit" class="btn btn-success" (click)="saveBet()">Save Bet</button>
+    </div>
+    <div class="col-sm-4" *ngIf="betClosed" >
+      <div>Bet : {{existingBet.scoreTeam1}} - {{existingBet.scoreTeam2}}</div>
+    </div>
+  </div>
+</div>
