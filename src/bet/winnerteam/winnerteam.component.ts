@@ -33,10 +33,15 @@ export class WinnerTeamComponent {
                         a => {
                             this.http.get<Bet>('http://localhost:2323/api/bet/winnerTeam/player/' + a.userName)
                             .subscribe(w => {
+                                if (w === null && this.isInBetDate()) {
+                                    this.canBet = true;
+                                    return;
+                                } else if (w === null && !this.isInBetDate()) {
+                                    this.canBet = false;
+                                    return;
+                                }
                                 this.winningTeam = x.find(elem => elem.id === w.winnerTeamId);
-                                console.log(this.winningTeam.eleminated + '-' + this.isInBetDate());
                                 this.canBet = this.winningTeam.eleminated && this.isInBetDate();
-                                console.log(this.canBet);
                             });
                         });
                 });
@@ -45,12 +50,12 @@ export class WinnerTeamComponent {
     saveBet() {
         this.auth.connectedUser().then(data => {
             this.http.post('http://localhost:2323/api/bet/',
-            new Bet(null, null, false,
+            new Bet(-1, null, false,
                             data.id, null, null, this.selected,
                              new Date(), false, null, null),
                             {headers: {'Content-Type': 'application/json; charset=utf-8'}})
                             .subscribe(x => {
-                                this.router.navigateByUrl('/bet');
+                                this.ngOnInit();
                             });
         });
     }

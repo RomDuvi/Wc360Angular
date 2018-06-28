@@ -18,6 +18,11 @@ export class RankingComponent {
 
     // tslint:disable-next-line:use-life-cycle-interface
     ngOnInit() {
+        this.refresh();
+        window.setInterval(this.refresh, 60000);
+    }
+
+    refresh() {
         this.http.get<Player[]>('http://localhost:2323/api/player').subscribe(x => this.players = x);
     }
 }

@@ -25,7 +25,7 @@ const appRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [LoginActivate]},
   { path: 'login', component: LoginComponent},
   { path: 'bet', component: BetComponent, canActivate: [LoginActivate]},
-  { path: 'ranking', component: RankingComponent, canActivate: [LoginActivate]},
+  { path: 'ranking', component: RankingComponent},
   { path: 'home', component: HomeComponent, canActivate: [LoginActivate]},
   { path: '**', component: LoginComponent}
 ];

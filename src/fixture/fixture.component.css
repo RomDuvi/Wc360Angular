@@ -9,5 +9,7 @@
 }
 
 .fixture{
-    margin : 5px; 
+    margin : 0px;
+    margin-left : 5px; 
+    padding: 5px;
 }

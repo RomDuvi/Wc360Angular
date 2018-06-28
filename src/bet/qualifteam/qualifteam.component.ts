@@ -17,6 +17,7 @@ export class QualifTeamComponent {
     qualifTeams: QualifTeam[] = [];
     bet = false;
     selectedNumber = 16;
+    groupsImg = './groups.png';
 
     constructor(private http: HttpClient, private auth: AuthService, private router: Router) {
     }
@@ -34,8 +35,10 @@ export class QualifTeamComponent {
                     this.http.get<number[]>('http://localhost:2323/api/bet/qualifteam/player/' + data.id)
                             .toPromise()
                             .then(y => {
-                                this.bet = y.length > 0;
-                                this.selectedNumber = 0;
+                                const d = new Date();
+                                const ld = new Date(2018, 5, 14, 16 , 0, 0, 0);
+                                this.bet = y.length > 0 || d > ld;
+                                this.selectedNumber = 16;
                                 y.forEach(id => {
                                     this.qualifTeams.find(qt => qt.team.id === id).selected = true;
                                 });
@@ -59,7 +62,7 @@ export class QualifTeamComponent {
             this.qualifTeams.filter(x => x.selected).map(x => ({playerId: data.id, teamId: x.team.id})),
             {headers: {'Content-Type': 'application/json; charset=utf-8'}})
                     .subscribe(x => {
-                        this.router.navigateByUrl('/bet');
+                        this.ngOnInit();
                     });
         });
     }

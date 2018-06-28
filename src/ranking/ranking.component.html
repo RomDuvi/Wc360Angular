@@ -1,4 +1,21 @@
 <h3>Ranking</h3>
-<div *ngFor="let player of players ; let i = index" >
-    {{i + 1}}. {{player.displayName}} - {{player.score}}
+<div class="d-flex justify-content-center">
+  <div class="col-sm-3">
+    <table class="table ranking">
+      <thead class="thead-light">
+        <tr>
+          <th>Rank</th>
+          <th>Name</th>
+          <th class="text-center">Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let player of players ; let i = index" [ngClass]="{'green-bg': i<3}">
+          <td>{{i+1}}</td>
+          <td>{{player.displayName}}</td>
+          <td class="text-center"> {{player.score}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
